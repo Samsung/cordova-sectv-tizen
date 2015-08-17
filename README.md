@@ -3,6 +3,7 @@ cordova-sectv-tizen is an TV application library that allows for Cordova-based p
 
 # Requires
 * 2015's Samsung Tizen TV
+* Samsung Tizen TV SDK (download at [Samsung D-Forum](http://samsungdforum.com))
 
 # How to use
 In the 2015's TV
