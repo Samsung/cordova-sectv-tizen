@@ -63,5 +63,5 @@ module.exports = {
         });
     // End of bootstrap
         console.log("cordova/platform: tizen bootstrap END");
-    }
+    } 
 };
