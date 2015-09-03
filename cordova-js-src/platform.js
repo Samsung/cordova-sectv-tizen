@@ -46,7 +46,7 @@ module.exports = {
         script.src = '$WEBAPIS/webapis/webapis.js';
         script.onload = function() {
             channel.onNativeReady.fire();
-        }
+        };
         head.appendChild(script);
 
         document.addEventListener('webkitvisibilitychange', function() {

@@ -1,11 +1,10 @@
-var cordova = require('cordova');
 var Connection = require('cordova/plugin/Connection');
 var TizenActiveConnectionType = {
     DISCONNECTED : 0,
     WIFI : 1,
     CELLULAR : 2,
     ETHERNET : 3
-}
+};
 
 module.exports = {
     getConnectionInfo: function(successCallback, errorCallback) {
