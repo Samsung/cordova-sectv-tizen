@@ -29,11 +29,11 @@ module.exports = {
                 networkType = Connection.UNKNOWN;
                 break;    
             }
-            setTimeout(function{
+            setTimeout(function(){
                 successCallback(networkType);
              },0);
         } catch (e) {
-            setTimeout(function{
+            setTimeout(function(){
                 if(errorCallback){
                     errorCallback();
                 }

@@ -2,7 +2,7 @@ var tizen = require('cordova/platform');
 
 module.exports = {
     getDeviceInfo: function(success, error) {
-        setTimeout(function{
+        setTimeout(function(){
             success({
                 cordova: tizen.cordovaVersion,
                 platform: 'sectv-tizen',
