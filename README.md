@@ -1,30 +1,64 @@
 # cordova-sectv-tizen
-cordova-sectv-tizen is an TV application library that allows for Cordova-based projects to be built for the Samsung Tizen TV Platform. Cordova based applications are, at the core, applications written with web technology: HTML, CSS and JavaScript.
+`cordova-sectv-tizen` is an TV application library that allows for Cordova-based projects to be built for the 2015's Samsung Tizen TV Platform.
+Cordova based applications are, at the core, applications written with web technology: HTML, CSS and JavaScript.
 
-# Requires
+# Supported Platform
 * 2015's Samsung Tizen TV
-* Samsung Tizen TV SDK (download at [Samsung D-Forum](http://samsungdforum.com))
-
-# How to use
-In the 2015's TV
-1. Copy the built/cordova.js to your cordova `www` directory root.
-2. Insert below code to your `index.html`
-```HTML
-<script src="cordova.js"></script>
-```
-3. Package your `www` directory by using Samsung Tizen TV SDK
 
 # Project Structure
 ```
     ./
-     |-src/
-     |  |-cordova.js ........ common Cordova stuff
-     |  |-common/ ........... base modules shared across platfoms
-     |-tasks/ ............... custom grunt tasks
-     |-tests/ ............... unit tests
-     '-pkg/ ................. generated platform cordova.js files
+     |-cordova-js-src/ ...... cordova-js sectv-tizen platform implementation
+     |  |-plugin/ ........... cordova plugin implementations
+     |  |-exec.js ........... cordova/exec module
+     |  `-platform.js ....... cordova/platform module having platform definition and bootstrap
+     |-www/ ................. Project template for Orsay platform
+     |-package.json ......... NPM package configuration
+     '-README.md ............ this file
 ```
 
 # How to Build
+* Please see [Cordova-js](http://github.com/apache/cordova-js) for more detail.
+* Clone the [Cordova-js](http://github.com/apache/cordova-js) project as sibling of this project.
+```
+    ./
+     |-cordova-js
+     `-cordova-sectv-tizen
+```
+* Add "sectv-tizen" as a target for `Gruntfile.js` in the cordova-js project.
+```javascript
+    ...
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        "compile": {
+            ...,
+            "sectv-tizen": {}
+        },
+        "compile-browserify": {
+        ...
+```
+* Add "sectv-tizen" property to "cordova-platforms" to the cordova-js project's `package.json` with path to this project as its value.
+```javascript
+  "cordova-platforms": {
+    ...,
+    "cordova-sectv-tizen": "../cordova-sectv-tizen"
+  }
+```
+* in the `cordova-js` directory's root:
+```
+$ grunt compile:sectv-tizen
+```
+* Above command will creates `cordova-js/pkg/cordova.sectv-tizen.js`. Let's copy the file to `www` directory which is including Orsay Application project template for further use. In the `cordova-js` directory:
+```
+$ cp ./pkg/cordova.sectv-tizen.js ../cordova-sectv-tizen/www/cordova.js
+```
+
+# How to use
+In the 2015's TV
+1. Create a Tizen project with Tizen IDE and copy the `www` directory's content to the Tizen project.
+2. Copy the built `cordova-js/pkg/cordova.sectv-tizen.js` or `www/cordova.js` to your tizen project directory's root with name `cordova.js`.
+3. Build and emulate the tizen project.
+* We recommand to use the "grunt-cordova-sectv" task for creating the tizen project.
 
 # Known Issues
+Not yet
