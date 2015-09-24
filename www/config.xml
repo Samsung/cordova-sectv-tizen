@@ -10,6 +10,8 @@
     <tizen:privilege name="http://developer.samsung.com/privilege/network.public"/>
     <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
     <tizen:privilege name="http://tizen.org/privilege/tv.window"/>
-    <tizen:privilege name="http://tizen.org/privilege/tv.channel"/>    
+    <tizen:privilege name="http://tizen.org/privilege/tv.channel"/>
+    <tizen:privilege name="http://developer.samsung.com/privilege/drminfo"/>
+    <tizen:privilege name="http://tizen.org/privilege/tv.audio"/>
     <tizen:profile name="tv"/>
 </widget>
