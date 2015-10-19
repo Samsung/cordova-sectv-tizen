@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-'use strict';
-
 var Connection = require('cordova/plugin/Connection');
 var TizenActiveConnectionType = {
     DISCONNECTED : 0,
