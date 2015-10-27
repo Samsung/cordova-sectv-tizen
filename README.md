@@ -53,7 +53,7 @@ Cordova based applications are, at the core, applications written with web techn
     $ grunt compile:sectv-tizen
     ```
 
-* Above command will creates `cordova-js/pkg/cordova.sectv-tizen.js`. Let's copy the file to `www` directory which is including Orsay Application project template for further use. In the `cordova-js` directory:
+* Above command will creates `cordova-js/pkg/cordova.sectv-tizen.js`. Let's copy the file to `www` directory which is including Tizen TV Application project template for further use. In the `cordova-js` directory:
     ```sh
     $ cp ./pkg/cordova.sectv-tizen.js ../cordova-sectv-tizen/www/cordova.js
     ```
