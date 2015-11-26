@@ -21,14 +21,13 @@ document.body.addEventListener("keydown", function(e){
     
     if(document.activeElement && document.activeElement.tagName.toUpperCase() === 'INPUT' && (document.activeElement.type === 'text' || document.activeElement.type === 'password')) {
         var event = document.createEvent('Event');        
-        switch(e.keyCode){
+        switch(e.keyCode) {
             case 65376: // Done
                 elInput = document.activeElement;
                 event.initEvent('submit', true, true);
                 elInput.dispatchEvent(event);
                 elInput.setAttribute('data-toast-ime-shown', 'false');
                 elInput.blur();
-                e.stopPropagation();
                 break;
             case 65385: // Cancel
                 elInput = document.activeElement;
@@ -37,7 +36,6 @@ document.body.addEventListener("keydown", function(e){
                 elInput.setAttribute('data-toast-ime-shown', 'false');
                 elInput.value = "";
                 elInput.blur();
-                e.stopPropagation();
                 break;
         }
     }
