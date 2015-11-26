@@ -28,7 +28,6 @@ module.exports = {
 
         var modulemapper = require('cordova/modulemapper');
         var channel = require('cordova/channel');
-        require('cordova/plugin/ime-via-input');
 
         modulemapper.clobbers('cordova/exec/proxy', 'cordova.commandProxy');
 
