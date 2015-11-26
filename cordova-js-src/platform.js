@@ -28,6 +28,7 @@ module.exports = {
 
         var modulemapper = require('cordova/modulemapper');
         var channel = require('cordova/channel');
+        require('cordova/plugin/ime-via-input');
 
         modulemapper.clobbers('cordova/exec/proxy', 'cordova.commandProxy');
 
@@ -46,6 +47,7 @@ module.exports = {
         script.src = '$WEBAPIS/webapis/webapis.js';
         script.onload = function() {
             channel.onNativeReady.fire();
+            require('cordova/plugin/ime-via-input');
         };
         head.appendChild(script);
 
