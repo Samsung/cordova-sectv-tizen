@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         config: '.jscsrc'
       },
       src: ['cordova-js-src/**/*.js']
-    },
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
