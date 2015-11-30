@@ -24,7 +24,7 @@ module.exports = {
     cordovaVersion: '3.4.0',
 
     bootstrap: function() {
-        console.log("cordova/platform: tizen bootstrap BEGIN");
+        console.log('cordova/platform: tizen bootstrap BEGIN');
 
         var modulemapper = require('cordova/modulemapper');
         var channel = require('cordova/channel');
@@ -39,7 +39,7 @@ module.exports = {
                 require(k);
             }
         }
-        
+
         var head = document.getElementsByTagName('head')[0];
         var script = document.createElement('script');
         script.type = 'text/javascript';
@@ -62,7 +62,8 @@ module.exports = {
         window.addEventListener('load', function () {
             channel.onDeviceReady.fire();
         });
-    // End of bootstrap
-        console.log("cordova/platform: tizen bootstrap END");
-    } 
+
+        // End of bootstrap
+        console.log('cordova/platform: tizen bootstrap END');
+    }
 };

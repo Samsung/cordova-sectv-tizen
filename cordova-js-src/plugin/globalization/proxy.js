@@ -1,4 +1,4 @@
-var GlobalizationError = require("cordova/plugin/GlobalizationError");
+var GlobalizationError = require('cordova/plugin/GlobalizationError');
 
 module.exports = {
     getPreferredLanguage: function(success, error) {
@@ -33,4 +33,4 @@ module.exports = {
     }
 };
 
-require("cordova/exec/proxy").add("Globalization", module.exports);
+require('cordova/exec/proxy').add('Globalization', module.exports);
