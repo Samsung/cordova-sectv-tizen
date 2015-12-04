@@ -19,21 +19,22 @@ document.body.addEventListener('keydown', function(e) {
 
     elInput = null;
 
-    if(document.activeElement && document.activeElement.tagName.toUpperCase() === 'INPUT' && (document.activeElement.type === 'text' || document.activeElement.type === 'password')) {
+    if(document.activeElement && document.activeElement.tagName.toUpperCase() === 'INPUT' &&
+        (document.activeElement.type === 'text' || document.activeElement.type === 'password')) {
         var event = document.createEvent('Event');
         switch(e.keyCode) {
             case 65376: // Done
                 elInput = document.activeElement;
                 event.initEvent('submit', true, true);
                 elInput.dispatchEvent(event);
-                elInput.setAttribute('data-toast-ime-shown', 'false');
+                elInput.setAttribute('data-ime-show', 'false');
                 elInput.blur();
                 break;
             case 65385: // Cancel
                 elInput = document.activeElement;
                 event.initEvent('cancel', true, true);
                 elInput.dispatchEvent(event);
-                elInput.setAttribute('data-toast-ime-shown', 'false');
+                elInput.setAttribute('data-ime-show', 'false');
                 elInput.value = '';
                 elInput.blur();
                 break;
@@ -43,6 +44,6 @@ document.body.addEventListener('keydown', function(e) {
 
 document.body.addEventListener('focus', function (e) {
     if(document.activeElement && document.activeElement.tagName.toUpperCase() === 'INPUT' && (document.activeElement.type === 'text' || document.activeElement.type === 'password')) {
-        document.activeElement.setAttribute('data-toast-ime-shown', 'true');
+        document.activeElement.setAttribute('data-ime-show', 'true');
     }
 }, true);
