@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Samsung/cordova-sectv-tizen.svg?branch=master)](https://travis-ci.org/Samsung/cordova-sectv-tizen)
+
 # cordova-sectv-tizen
 `cordova-sectv-tizen` is an application library that allows for Cordova-based projects to be built for the 2015's Samsung Tizen TV Platform.
 Cordova based applications are, at the core, applications written with web technology: HTML, CSS and JavaScript.
