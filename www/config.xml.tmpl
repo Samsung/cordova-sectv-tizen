@@ -3,7 +3,7 @@
     <tizen:application id="{{packageid}}.{{name}}" package="{{packageid}}" required_version="2.3"/>
     <content src="index.html"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>
-    <icon src="img/logo.png"/>
+    <icon src="{{{iconpath}}}"/>
     <name>{{name}}</name>
     <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
     <tizen:privilege name="http://developer.samsung.com/privilege/productinfo"/>
@@ -12,6 +12,6 @@
     <tizen:privilege name="http://tizen.org/privilege/tv.window"/>
     <tizen:privilege name="http://tizen.org/privilege/tv.channel"/>
     <tizen:privilege name="http://tizen.org/privilege/tv.audio"/>
-    <tizen:privilege name="http://developer.samsung.com/privilege/drmplay"/>
+    <tizen:privilege name="http://developer.samsung.com/privilege/drmplay"/>    
     <tizen:profile name="tv"/>
 </widget>
