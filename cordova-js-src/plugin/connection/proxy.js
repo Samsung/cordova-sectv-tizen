@@ -22,10 +22,30 @@ var TizenActiveConnectionType = {
     ETHERNET: 3
 };
 
+var listenerID = -1; // NetworkStateChangeListener
+
 module.exports = {
+
     getConnectionInfo: function(successCallback, errorCallback) {
         var networkType = Connection.NONE;
         try {
+            var onChange = function(data) {
+                var networkEvent = document.createEvent('Event');
+                switch(data) {
+                case webapis.network.NetworkState.GATEWAY_CONNECTED:
+                    networkEvent.initEvent('online', true, true);
+                    window.dispatchEvent(networkEvent);
+                    break;
+                case webapis.network.NetworkState.GATEWAY_DISCONNECTED:
+                    networkEvent.initEvent('offline', true, true);
+                    window.dispatchEvent(networkEvent);
+                    break;
+                }
+            };
+            if(listenerID <= -1) {
+                listenerID = webapis.network.addNetworkStateChangeListener(onChange);
+            }
+
             var activeType = webapis.network.getActiveConnectionType();
             switch(activeType) {
             case TizenActiveConnectionType.DISCONNECTED:
