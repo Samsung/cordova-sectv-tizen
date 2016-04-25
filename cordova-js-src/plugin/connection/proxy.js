@@ -15,48 +15,22 @@
  */
 
 var Connection = require('cordova/plugin/Connection');
-var TizenActiveConnectionType = {
-    DISCONNECTED: 0,
-    WIFI: 1,
-    CELLULAR: 2,
-    ETHERNET: 3
-};
-
-var listenerID = -1; // NetworkStateChangeListener
 
 module.exports = {
-
     getConnectionInfo: function(successCallback, errorCallback) {
         var networkType = Connection.NONE;
         try {
-            var onChange = function(data) {
-                var networkEvent = document.createEvent('Event');
-                switch(data) {
-                case webapis.network.NetworkState.GATEWAY_CONNECTED:
-                    networkEvent.initEvent('online', true, true);
-                    window.dispatchEvent(networkEvent);
-                    break;
-                case webapis.network.NetworkState.GATEWAY_DISCONNECTED:
-                    networkEvent.initEvent('offline', true, true);
-                    window.dispatchEvent(networkEvent);
-                    break;
-                }
-            };
-            if(listenerID <= -1) {
-                listenerID = webapis.network.addNetworkStateChangeListener(onChange);
-            }
-
             var activeType = webapis.network.getActiveConnectionType();
             switch(activeType) {
-            case TizenActiveConnectionType.DISCONNECTED:
+            case webapis.network.NetworkActiveConnectionType.DISCONNECTED:
                 console.log('network disconnected');
                 networkType = Connection.NONE;
                 break;
-            case TizenActiveConnectionType.WIFI:
+            case webapis.network.NetworkActiveConnectionType.WIFI:
                 console.log('connection network type is Wifi');
                 networkType = Connection.WIFI;
                 break;
-            case TizenActiveConnectionType.ETHERNET:
+            case webapis.network.NetworkActiveConnectionType.ETHERNET:
                 console.log('connection network type is Ethernet');
                 networkType = Connection.ETHERNET;
                 break;
@@ -66,14 +40,19 @@ module.exports = {
                 break;
             }
             setTimeout(function() {
+                if(navigator.connection) {
+                    navigator.connection.type = networkType;
+                }
                 successCallback(networkType);
             }, 0);
         }
         catch (e) {
+            networkType = Connection.NONE;
             setTimeout(function() {
-                if(errorCallback) {
-                    errorCallback();
+                if(navigator.connection) {
+                    navigator.connection.type = networkType;
                 }
+                successCallback(networkType);
             }, 0);
         }
     }
