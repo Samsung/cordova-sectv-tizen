@@ -19,7 +19,25 @@ var Connection = require('cordova/plugin/Connection');
 module.exports = {
     getConnectionInfo: function(successCallback, errorCallback) {
         var networkType = Connection.NONE;
-        try {
+
+        window.addEventListener('online', function (e) {
+            checkNetworkType();
+
+            if(navigator.connection) {
+                navigator.connection.type = networkType;
+            }
+        });
+        window.addEventListener('offline', function (e) {
+            networkType = Connection.NONE;
+
+            if(navigator.connection) {
+                navigator.connection.type = networkType;
+            }
+        });
+
+        getActiveConnectionType(successCallback, errorCallback);
+
+        function checkNetworkType() {
             var activeType = webapis.network.getActiveConnectionType();
             switch(activeType) {
             case webapis.network.NetworkActiveConnectionType.DISCONNECTED:
@@ -39,21 +57,27 @@ module.exports = {
                 networkType = Connection.UNKNOWN;
                 break;
             }
-            setTimeout(function() {
-                if(navigator.connection) {
-                    navigator.connection.type = networkType;
-                }
-                successCallback(networkType);
-            }, 0);
         }
-        catch (e) {
-            networkType = Connection.NONE;
-            setTimeout(function() {
-                if(navigator.connection) {
-                    navigator.connection.type = networkType;
-                }
-                successCallback(networkType);
-            }, 0);
+
+        function getActiveConnectionType(successCB, errorCB) {
+            try {
+                checkNetworkType();
+                setTimeout(function() {
+                    if(navigator.connection) {
+                        navigator.connection.type = networkType;
+                    }
+                    successCB(networkType);
+                }, 0);
+            }
+            catch (e) {
+                networkType = Connection.NONE;
+                setTimeout(function() {
+                    if(navigator.connection) {
+                        navigator.connection.type = networkType;
+                    }
+                    successCB(networkType);
+                }, 0);
+            }
         }
     }
 };
