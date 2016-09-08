@@ -5,7 +5,7 @@
 Cordova based applications are, at the core, applications written with web technology: HTML, CSS and JavaScript.
 
 # Supported Platform
-* 2015's Samsung Tizen TV
+* Tizen Samsung Smart TV (sectv-tizen)
 
 # Project Structure
 ```
